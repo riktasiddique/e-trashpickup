@@ -77,6 +77,26 @@
         <!-- Content -->
         <div class="content">
             <!-- Animated -->
+            @if(session()->has('success'))
+            <div class="sufee-alert alert with-close alert-primary alert-dismissible fade show">
+                <span class="badge badge-pill badge-primary">Success</span>
+                <!-- You successfully read this important alert. -->
+                {{session()->get('success')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            @endif
+            @if(session()->has('error'))
+            <div class="sufee-alert alert with-close alert-danger alert-dismissible fade show">
+                <span class="badge badge-pill badge-danger">erroe</span>
+                <!-- You successfully read this important alert. -->
+                {{session()->get('error')}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            @endif
             @yield('content')
             <!-- .animated -->
         </div>

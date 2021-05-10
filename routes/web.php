@@ -27,4 +27,5 @@ require __DIR__.'/auth.php';
 
 Route::prefix('dashboard')->group(function () {
     Route::resource('users', UserController::class)->middleware(['auth']);
+    Route::get('users/{user}/change_status',[UserController::class, 'chageStatus'])->name('user.change_status')->middleware(['auth']);
 });

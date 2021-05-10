@@ -15,6 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        // return   $users;
         return view('admin.users.index', compact('users'));
     }
 
@@ -71,6 +72,22 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function chageStatus(User $user)
+    {
+        // return  $request->all();
+        $user->status = $user->is_active ? 0 : 1;
+        $user->save();
+        return back()->with('success', 'user status updated succesfylly!');
+        // return $user;
     }
 
     /**
