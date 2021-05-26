@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// use App\Modeld\changeRole;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -48,7 +49,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        // return $user; 
+        $roles = Role::all();
+        // return view('admin.users.show', compact('user', 'roles'));
+        return view('admin.users.show',compact('user','roles'));
     }
 
     /**
@@ -73,7 +77,31 @@ class UserController extends Controller
     {
         //
     }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function chageRole(Request $request, User $user)
+    {
+        if(auth()->user()->role_id != 1 || auth()->user()->id !== $user->id){
+            return back()->with('error', 'you are not allow to do this!');
+        }
 
+        // if($user->role_id !=1){
+        //     return back()->with('error', 'you are not allow to do this!');
+        // }
+        $request->validate([
+            'role_id'=> 'required'
+        ]);
+        // return [' $request'=> $request->all(), '$user' => $user];
+        $user->role_id = $request->role_id;
+        $user->save();
+        return back()->with('success', 'Role Changed Successfuly!');
+
+    }
     /**
      * Update the specified resource in storage.
      *

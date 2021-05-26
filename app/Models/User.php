@@ -44,4 +44,7 @@ class User extends Authenticatable
     {
         return $this->status == 1 ? true : false;
     }
+    public function role(){
+        return $this->belongsTo('App\Models\Role');
+    }
 }
