@@ -86,7 +86,7 @@ class UserController extends Controller
      */
     public function chageRole(Request $request, User $user)
     {
-        if(auth()->user()->role_id != 1 || auth()->user()->id !== $user->id){
+        if(auth()->user()->id == $user->id){
             return back()->with('error', 'you are not allow to do this!');
         }
 

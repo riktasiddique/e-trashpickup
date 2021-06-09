@@ -31,8 +31,8 @@
                                         @else
                                             <a href="{{route('user.change_status', $user->id)}}" class="btn btn-success">Unblock</a>
                                         @endif
-                                        <!-- <a href="{{route('users.show', $user->id)}}" class="btn btn-secondary">Details</a>
-                                        </td> -->
+                                         <!-- <a href="{{route('users.show', $user->id)}}" class="btn btn-secondary">Details</a> -->
+                                        </td> 
                                         </td>
                                         <td>
                                             <a href="{{route('users.show', $user->id)}}" class="btn btn-secondary">Details</a>
